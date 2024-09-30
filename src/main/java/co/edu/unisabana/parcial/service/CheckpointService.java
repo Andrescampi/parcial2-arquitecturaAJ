@@ -19,7 +19,6 @@ public class CheckpointService {
     }
     Checkin checkin = new Checkin(checkpoint.facility, checkpoint.driver, checkpoint.dayOfMonth);
     checkpointPort.saveCheckin(checkin);
-
   }
 
   public void checkout(CheckpointDTO checkpoint) {
