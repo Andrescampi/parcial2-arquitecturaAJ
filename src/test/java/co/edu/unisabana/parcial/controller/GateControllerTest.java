@@ -1,5 +1,7 @@
 package co.edu.unisabana.parcial.controller;
 
+import co.edu.unisabana.parcial.controller.dto.CheckpointDTO;
+import co.edu.unisabana.parcial.controller.dto.ResponseGate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +24,38 @@ class GateControllerTest {
 
     @BeforeEach
     void setUp() {
-
+        // Aquí puedes configurar cualquier dato necesario antes de cada prueba
     }
 
     @Test
     void checkin() {
-        String url = "http://localhost:" + port + "/api/gate/checkin";
-        ResponseEntity<String> response = restTemplate.postForEntity(url, null, String.class);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        String url = "http://localhost:" + port + "/checkpoint/checkin";
 
+        // Crea un objeto CheckpointDTO para el check-in
+        CheckpointDTO checkpoint = new CheckpointDTO();
+        // Establece los valores necesarios en checkpoint según tu implementación
+        // checkpoint.setSomeField(value); // Ajusta según tus campos
+
+        ResponseEntity<ResponseGate> response = restTemplate.postForEntity(url, checkpoint, ResponseGate.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().isSuccess()).isTrue(); // Verifica si la respuesta es exitosa
     }
 
     @Test
     void checkout() {
-        String url = "http://localhost:" + port + "/api/gate/checkout";
-        ResponseEntity<String> response = restTemplate.postForEntity(url, null, String.class);
+        String url = "http://localhost:" + port + "/checkpoint/checkout";
+
+        // Crea un objeto CheckpointDTO para el check-out
+        CheckpointDTO checkpoint = new CheckpointDTO();
+        // Establece los valores necesarios en checkpoint según tu implementación
+        // checkpoint.setSomeField(value); // Ajusta según tus campos
+
+        ResponseEntity<ResponseGate> response = restTemplate.postForEntity(url, checkpoint, ResponseGate.class);
+
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().isSuccess()).isTrue(); // Verifica si la respuesta es exitosa
     }
 }
