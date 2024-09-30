@@ -37,4 +37,3 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
 
-

@@ -8,13 +8,14 @@ plugins {
 
 group = 'co.edu.unisabana'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17' // Cambiado a Java 17
 
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
 }
+
 sonarqube {
 	properties {
 		property "sonar.projectKey", "parcial" // Cambia esto al proyecto clave que estés utilizando
@@ -27,9 +28,11 @@ sonarqube {
 repositories {
 	mavenCentral()
 }
+
 jacoco {
 	toolVersion = "0.8.8"
 }
+
 test {
 	useJUnitPlatform()
 	finalizedBy jacocoTestReport
@@ -64,6 +67,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
 sonarqube {
 	properties {
 		property("sonar.projectName", "parcial")
